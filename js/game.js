@@ -3,6 +3,11 @@ class Game{
     this.ctx = context;
   }
 
+  _drawScenery(){
+    this.ctx.fillStyle = 'red'
+    this.ctx.fillRect(0, 520, 1000, 80)
+  }
+
   _assignControls() {
     // Controles del teclado
     document.addEventListener('keydown', (event) => {
@@ -20,6 +25,7 @@ class Game{
   }
 
   _update() {
+    this._drawScenery()
     window.requestAnimationFrame(() => this._update());
   }
 
