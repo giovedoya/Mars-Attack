@@ -5,12 +5,15 @@ class Game{
     this.generateInterval = null; 
   }
 
+
+
 _generateEnemies(){
   this.generateInterval = setInterval(() => {
     const newEnemies = new Enemies();
-    newEnemies._appearEnemy()
+    newEnemies._appearEnemy();
     this.enemies.push(newEnemies);
-  }, 1000)
+    newEnemies._disappearEnemy();   
+  }, 100)
 }  
 
   _drawScreen (){
@@ -21,21 +24,13 @@ _generateEnemies(){
 
   // enemy  
   _drawEnemy(){  
-    this.enemies.forEach((elem) => {
-    this.ctx.fillStyle = 'red'
-    this.ctx.fillRect(elem.x, elem.x, elem.width, elem.height) 
-    }) 
-    
+   this.enemies.forEach((elem) => {
+    this.ctx.fillStyle = 'blue'
+    this.ctx.fillRect(elem.x, elem.y, elem.width, elem.height) 
+  })     
   }
 
-  // _appearEnemy() {
-  //   this.ctx.clearRect(0, 0, 1000, 600)
-  //   this.enemy.y = this.enemy.y - 5;
-  //    if(this.enemy.y < 400){
-  //    this.enemy.y = 500 === this.enemy.height;
-  //    } 
-  //   this._drawScreen()
-  // }
+  
     
 
   _assignControls() {
@@ -56,7 +51,7 @@ _generateEnemies(){
 
   _update() {
     this._drawEnemy()
-    this._drawScreen()  
+  //  this._drawScreen()  
     window.requestAnimationFrame(() => this._update());
   }
 
@@ -66,3 +61,4 @@ _generateEnemies(){
     this._update();
   }
 }
+
