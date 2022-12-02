@@ -1,12 +1,11 @@
 class Enemies{
 constructor(){
-    this.x =  500 // Math.floor(Math.random() * 1000);
-    this.y = 520;
-    this.width = 80;
+    this.x =  300 // Math.floor(Math.random() * 1000);
+    this.y = 410;
+    this.width = 100;
     this.height = 100;
     this.appearInterval = undefined;
     this.disappearInterval = undefined;
-    this.velocidad = 10;   
 }
 
 // _appearEnemy() {
@@ -18,33 +17,21 @@ constructor(){
 //      } 
 //  this._drawScreen()
 //     }, 10)
-//   }
-
-
-// _enemyUp(){
-//     while (this.y > 400){
-//         this.y -= 10
-//     }
-// }
-// _enemyDown(){
-//     while(this.y < 0){
-//         this.y +=10
-//     }
-// }
+//   }  
 
 // _appearEnemy(){
-//     this._enemyUp();
-//     setTimeout(this._enemyDown(), 1000)
+//   this.appearInterval = setInterval(() => {   
+//     if(this.y < 300 ){
+//       clearInterval(this.appearInterval)
+//     }
+//     this.y -= 5;
+//     }, 10)    
 // }
 
-
 _appearEnemy(){
-  this.appearInterval =  setInterval(() => {   
-    if(this.y < 400 ){
-      clearInterval(this.appearInterval)
-    }
-    this.y -= 5;
-    }, 10)    
+    this.y > 200;
+    this.y -= 5
+    clearInterval(this.appearInterval)
 }
 
 _disappearEnemy(){
@@ -52,13 +39,20 @@ _disappearEnemy(){
         if(this.y > 400){
          clearInterval(this.disappearInterval)
         }              
-        this.y = this.y + 10;
+        this.y = this.y - 10;
         }, 10)     
-    }
-    
+    }    
 }
 
+// _appearAndDisappear(){
+//     this.appearInterval = setInterval(() =>{
+//         if(this.y < 400){
+//             clearInterval(this.appearInterval)
+//         }
+//         this.y -=5;
+//     }, 10)
 
+// }
 
 // _appearEnemy(){
 //     this.ctx.clearRect(0, 0, 1000, 600)
