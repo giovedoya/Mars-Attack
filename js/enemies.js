@@ -1,45 +1,28 @@
 class Enemies{
 constructor(){
-    this.x =  300 // Math.floor(Math.random() * 1000);
-    this.y = 410;
+    this.x =  Math.floor(Math.random() * 950);
+    this.y = 600;
     this.width = 100;
-    this.height = 100;
+    this.height = 200;
     this.appearInterval = undefined;
     this.disappearInterval = undefined;
 }
 
-// _appearEnemy() {
-//    this.appearInterval =  setInterval(() => { 
-//    this.ctx.clearRect(0, 0, 1000, 600)
-//     this.enemy.y = this.enemy.y - 5;
-//      if(this.enemy.y < 400){
-//      this.enemy.y = 500 === this.enemy.height;
-//      } 
-//  this._drawScreen()
-//     }, 10)
-//   }  
-
-// _appearEnemy(){
-//   this.appearInterval = setInterval(() => {   
-//     if(this.y < 300 ){
-//       clearInterval(this.appearInterval)
-//     }
-//     this.y -= 5;
-//     }, 10)    
-// }
-
 _appearEnemy(){
-    this.y > 200;
-    this.y -= 5
-    clearInterval(this.appearInterval)
+  this.appearInterval = setInterval(() => {   
+    if(this.y < 400 ){
+      clearInterval(this.appearInterval)
+    }
+    this.y -= 5;
+    }, 1)    
 }
 
 _disappearEnemy(){
     this.disappearInterval = setInterval(() => {
-        if(this.y > 400){
+        if(this.y > 600){
          clearInterval(this.disappearInterval)
         }              
-        this.y = this.y - 10;
+        this.y = this.y + 5;
         }, 10)     
     }    
 }

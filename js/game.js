@@ -8,16 +8,26 @@ class Game{
     this.timer = 0;
   }
 
+// _generateEnemies(){
+//   this.generateInterval = setInterval(() => {
+//     const newEnemies = new Enemies();
+//     newEnemies._appearEnemy();
+//     this.enemies.push(newEnemies);
+//     newEnemies._disappearEnemy(); 
+//     clearInterval(this._generateEnemies)  
+//   }, 2000)
+//   console.log('que pasa')
+// }  
+
 _generateEnemies(){
   this.generateInterval = setInterval(() => {
-    const newEnemies = new Enemies();
-    newEnemies._appearEnemy();
-    this.enemies.push(newEnemies);
-    newEnemies._disappearEnemy(); 
-    clearInterval(this._generateEnemies)  
-  }, 2000)
-  console.log('que pasa')
-}  
+  const newEnemies = new Enemies();
+  newEnemies._appearEnemy();
+  this.enemies.push(newEnemies);
+  newEnemies._disappearEnemy(); 
+  clearInterval(this._generateEnemies)  
+}, 1000)
+}
 
 // Function that draw the scenary
 _drawScreen (){
@@ -66,7 +76,7 @@ _drawEnemy(){
     this._clean();
     this._drawEnemy()
     //this._drawScreen()
-   this.player._getMouse();
+    this.player._getMouse();
     window.requestAnimationFrame(() => this._update());
   }
 

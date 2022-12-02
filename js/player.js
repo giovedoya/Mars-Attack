@@ -21,13 +21,6 @@ class Player {
       //  console.log(message)
     })
    }
-//  _getMouse(){
-//     let canvas = document.getElementById('canvas');
-//     const ctx = canvas.getContext('2d');  
-//     canvas.addEventListener ('mousemove', function (e){
-//     const mouseX = e.clientX - this.canvas.offsetLeft;
-//     const mouseY = e.clientY - this.canvas.offsetTop;
-//     })
-//  }
+
    
 }
