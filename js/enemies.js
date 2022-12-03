@@ -1,11 +1,12 @@
 class Enemies{
 constructor(){
-    this.x =  Math.floor(Math.random() * 950);
+    this.x =  Math.floor(Math.random() * 900);
     this.y = 600;
     this.width = 100;
     this.height = 200;
     this.appearInterval = undefined;
     this.disappearInterval = undefined;
+    this.image = enemigos[Math.floor(Math.random() * enemigos.length )]
 }
 
 _appearEnemy(){
@@ -14,7 +15,7 @@ _appearEnemy(){
       clearInterval(this.appearInterval)
     }
     this.y -= 5;
-    }, 1)    
+    }, 3)    
 }
 
 _disappearEnemy(){
@@ -24,6 +25,8 @@ _disappearEnemy(){
         }              
         this.y = this.y + 5;
         }, 10)     
+       // console.log('que pasa')
+        this.intervalId = setTimeout(this._disappearEnemy, 2000)
     }    
 }
 

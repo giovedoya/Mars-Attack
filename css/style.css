@@ -32,8 +32,9 @@ canvas {
 
 }
 
-canvas:hover {
-  cursor:crosshair
+cursor {
+ 
+  background-image: url('img/mirilla.png');
 }
 
 /* Auxiliar classes */

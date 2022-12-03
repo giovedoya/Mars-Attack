@@ -18,9 +18,10 @@ class Player {
         this.x = mousePosition.x - ctx.canvas.offsetLeft;
         this.y = mousePosition.y - ctx.canvas.offsetTop;
     // let message = 'Mouse position: ' + mousePosition.x +',' + mousePosition.y;
-      //  console.log(message)
+   //  console.log(message)
     })
    }
+
 
    
 }
