@@ -1,5 +1,5 @@
 class Game{
-  constructor(context) {
+  constructor(context, x, y) {
     this.ctx = context;
     this.enemies = [];  
     this.generateInterval = null;
@@ -8,32 +8,16 @@ class Game{
     this.timer = 0;
   }
 
-// _generateEnemies(){
-//   this.generateInterval = setInterval(() => {
-//     const newEnemies = new Enemies();
-//     newEnemies._appearEnemy();
-//     this.enemies.push(newEnemies);
-//     newEnemies._disappearEnemy(); 
-//     clearInterval(this._generateEnemies)  
-//   }, 2000)
-//   console.log('que pasa')
-// }  
-
 _generateEnemies(){
   this.generateInterval = setInterval(() => {
   const newEnemies = new Enemies();
   newEnemies._appearEnemy();
   this.enemies.push(newEnemies);
-  //newEnemies._disappearEnemy(); 
   setTimeout(()=>newEnemies._disappearEnemy(), 1000);
-  // se elimina del array un enemigo
   setTimeout(()=>this.enemies.splice(this.enemies.indexOf(newEnemies),1), 2000);
-  //  console.log(this.enemies)
   clearInterval(this._generateEnemies)  
 }, 1000)
 }
-
-
 // Function that draw the scenary
 _drawScreen (){
     //  escenario
@@ -43,12 +27,8 @@ _drawScreen (){
 
   // function that draw the enemies  
 _drawEnemy(){  
-   this.enemies.forEach((elem) => {
-    // this.ctx.fillStyle = 'blue'
-    //  this.ctx.fillRect(elem.x, elem.y, elem.width, elem.height) 
-    
+   this.enemies.forEach((elem) => { 
     this.ctx.drawImage(elem.image, elem.x, elem.y, elem.width, elem.height);
-  //   console.log('que pasa')
   })     
   }    
   // _assignControls() {
@@ -67,27 +47,40 @@ _drawEnemy(){
   //   });
   // }
   
+  // _clickEnemy(){    
+  // //  const distance =
+  // //  Math.sqrt(
+  // //  ( (xmouse - this.x ) * (xmouse - this.x ) )
+  // //  + 
+  // //  ( (ymouse - this.y ) * (ymouse - this.y ) )
+  // //  );
+  // //  console.log(distance)
+  //  if((this.x >= this.x  && this.x <= this.x + this.width) &&
+  //   (this.y >= this.y && this.y <= this.y + this.height)){  
+  //     this.points++    
+  //   } else{
+  //   } console.log(this.points)
+  // }
+
   _assignClickMouse(){
-    document.addEventListener('click', (e)=> {  
-    // console.log(e.x, e.y) 
-    this.checkCollison()
-      this.points++
-      console.log(this.points)
-      //const detecterEnemy  = this.ctx.getImageData(e.x, e.y, 1, 1)
-     // console.log(detecterEnemy)
+    canvas.addEventListener('click', (e)=> { 
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      //console.log(this._clickEnemy())
+      this.checkCollison(x, y)    
+      this.points++      
     })
   }
-
+ 
   checkCollison(){
     this.enemies.forEach((enemy) => {
-    if((this.player.x >= enemy.x  && this.player.x <= enemy.x + enemy.width)
-    && (this.player.y >= enemy.y && this.player.y <= enemy.y + enemy.height)){        
-    }    
-   // console.log('colision')
-  })
+    if((this.x >= enemy.x  && this.x <= enemy.x + enemy.width)
+    && (this.y >= enemy.y && this.y <= enemy.y + enemy.height)){   
+      this._assignClickMouse()           
+    }  return true      
+  })  
 }
-
-
   _writeScore(){
     this.ctx.fillStyle = 'black';
     this.ctx.font = '20px Verdana';
@@ -105,15 +98,17 @@ _drawEnemy(){
   _update() {
     this._clean();
     this._drawEnemy();
-    this._drawScreen();
+  //  this._drawScreen();
     this.player._getMouse();
-   // this.checkCollison();
-   // this._writeScore();
+    this._assignClickMouse
+    this._writeScore();
     window.requestAnimationFrame(() => this._update());
   }
 
   start() {
-    this._assignClickMouse();
+    //this._clickEnemy(); 
+    this.checkCollison();   
+    this._ass//
     this._generateEnemies();
     this._update();
   }

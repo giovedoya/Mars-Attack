@@ -1,9 +1,9 @@
 class Player {
     constructor(){
         this.x = undefined;
-        this.y = undefined;
+        this.y = undefined;       
     }
-   
+
    _getMouse(){
     function getMousePosition(canvas, e){
         return {
