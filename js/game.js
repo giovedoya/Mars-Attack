@@ -6,9 +6,8 @@ class Game{
     this.player = new Player();
     this.points = 0;
     this.timer = 30;
-    this.temporizador = false;
     this.generateTimer = undefined;
-    this.youWin = false;
+    this.youWin = undefined;
   }
 
 _generateEnemies(){
@@ -17,7 +16,7 @@ _generateEnemies(){
   newEnemies._appearEnemy();
   this.enemies.push(newEnemies);
   setTimeout(()=>newEnemies._disappearEnemy(), 1000);
-  setTimeout(()=>this.enemies.splice(this.enemies.indexOf(newEnemies),1), 2000);
+  setTimeout(()=>this.enemies.splice(this.enemies.indexOf(newEnemies),1), 1500);
   clearInterval(this._generateEnemies)  
 }, 1000)
 }
@@ -36,7 +35,6 @@ _drawEnemy(){
     && (this.player.y >= enemy.y && this.player.y <= enemy.y + enemy.height)){     
       this.points++;
     }
-    //this._assignClickMouse(enemy.x, enemy.y)     
   })  
 } 
 _assignClickMouse(){
@@ -45,13 +43,11 @@ _assignClickMouse(){
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top; 
       this.player.x = x;
-      this.player.y = y;
-      console.log(x, y) 
+      this.player.y = y; 
       this.checkCollison()      
   })
 
 }
-
   _writeScore(){
     this.ctx.fillStyle = 'black';
     this.ctx.font = '20px Verdana';
@@ -79,8 +75,14 @@ _assignClickMouse(){
     }    
   }
  _win(){
-  
-
+  if(this.points >= 20){
+    clearInterval(this.youWin)
+    clearInterval(this.generateInterval)
+    const winPage = document.getElementById('win-page')
+    winPage.style = 'display: flex';
+    const canvas = document.getElementById('canvas')
+    canvas.style = 'display: none';   
+  }
  }
 
 
@@ -91,17 +93,14 @@ _assignClickMouse(){
   _update() {
     this._clean();    
     this._drawEnemy();
-   // this.player._getMouse();   
     this._writeScore(); 
-    //this.clickEnemy();
     this._writeTimer();    
-    window.requestAnimationFrame(() => this._update());
     this._gameOver();
+    this._win();
+    window.requestAnimationFrame(() => this._update());
   }
 
   start() {
-    //this._clickEnemy();
-
     this.checkCollison();
     this._assignClickMouse();  
     this._timerGame();

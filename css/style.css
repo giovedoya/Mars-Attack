@@ -18,10 +18,27 @@
   margin-top: 100px;
   background-image: url('/img/BGgame.png');
 }
-
 #lose-page {
   display: none;
 }
+
+#win-page{
+  height: 600px;
+  width: 1000px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  margin: 0 auto;
+  background-image: url('/img/background.png');
+}
+#win-page{
+  display: none;
+  color: red;
+}
+
+
 button {
   margin-top: 200px;
   margin-left: 150px;
