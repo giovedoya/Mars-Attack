@@ -11,35 +11,41 @@
   width: 1000px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items:flex-start;
   flex-direction: column;
   text-align: center;
-  margin: 0 auto;
-  border: 1px solid black;
-  margin-top: 30px;
-  background-image: url('/img/bgStart.png');
-}
-h1{
-  display: flex;
-  justify-content:
+  margin: 0 auto;  
+  margin-top: 100px;
+  background-image: url('/img/BGgame.png');
 }
 
 #lose-page {
   display: none;
 }
+button {
+  margin-top: 200px;
+  margin-left: 150px;
+  background: #e06450;
+  cursor: pointer;
+  border: none;
+  padding: 16px 32px;
+  color: #f6ebc9;
+  font-size: 24px;
+  font-weight: bold;
+  position: relative;
+  border-radius: 20px;
+}
 
 canvas {
-  border: 1px solid black;
+
   display: block;
   margin: 0 auto;
   margin-top: 30px;
   margin-bottom: 50px;
-  background-image: url('/img/background.png');
+  background-image: url('/img/backgroundgame.png');
 
 }
-
-cursor {
- 
+cursor { 
   background-image: url('img/mirilla.png');
 }
 

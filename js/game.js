@@ -1,11 +1,14 @@
 class Game{
-  constructor(context, x, y) {
+  constructor(context) {
     this.ctx = context;
     this.enemies = [];  
     this.generateInterval = null;
     this.player = new Player();
     this.points = 0;
-    this.timer = 0;
+    this.timer = 30;
+    this.temporizador = false;
+    this.generateTimer = undefined;
+    this.youWin = false;
   }
 
 _generateEnemies(){
@@ -18,98 +21,91 @@ _generateEnemies(){
   clearInterval(this._generateEnemies)  
 }, 1000)
 }
-// Function that draw the scenary
-_drawScreen (){
-    //  escenario
-    this.ctx.fillStyle = 'orange', 
-    this.ctx.fillRect(0, 520, 1000, 80)
-  }
 
   // function that draw the enemies  
 _drawEnemy(){  
    this.enemies.forEach((elem) => { 
     this.ctx.drawImage(elem.image, elem.x, elem.y, elem.width, elem.height);
   })     
-  }    
-  // _assignControls() {
-  //   // Controles del teclado
-  //   document.addEventListener('keydown', (event) => {
-  //     switch (event.code) {
-  //       case 'ArrowLeft':
-  //         this.meatball.moveLeft();
-  //         break;
-  //       case 'ArrowRight':
-  //         this.meatball.moveRight();
-  //         break;
-  //       default:
-  //         break;
-  //     }
-  //   });
-  // }
+  }   
   
-  // _clickEnemy(){    
-  // //  const distance =
-  // //  Math.sqrt(
-  // //  ( (xmouse - this.x ) * (xmouse - this.x ) )
-  // //  + 
-  // //  ( (ymouse - this.y ) * (ymouse - this.y ) )
-  // //  );
-  // //  console.log(distance)
-  //  if((this.x >= this.x  && this.x <= this.x + this.width) &&
-  //   (this.y >= this.y && this.y <= this.y + this.height)){  
-  //     this.points++    
-  //   } else{
-  //   } console.log(this.points)
-  // }
-
-  _assignClickMouse(){
+ 
+  checkCollison(){
+    this.enemies.forEach(enemy => {
+    if((this.player.x >= enemy.x  && this.player.x <= enemy.x + enemy.width)
+    && (this.player.y >= enemy.y && this.player.y <= enemy.y + enemy.height)){     
+      this.points++;
+    }
+    //this._assignClickMouse(enemy.x, enemy.y)     
+  })  
+} 
+_assignClickMouse(){
     canvas.addEventListener('click', (e)=> { 
       const rect = canvas.getBoundingClientRect();
       const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      //console.log(this._clickEnemy())
-      this.checkCollison(x, y)    
-      this.points++      
-    })
-  }
- 
-  checkCollison(){
-    this.enemies.forEach((enemy) => {
-    if((this.x >= enemy.x  && this.x <= enemy.x + enemy.width)
-    && (this.y >= enemy.y && this.y <= enemy.y + enemy.height)){   
-      this._assignClickMouse()           
-    }  return true      
-  })  
+      const y = e.clientY - rect.top; 
+      this.player.x = x;
+      this.player.y = y;
+      console.log(x, y) 
+      this.checkCollison()      
+  })
+
 }
+
   _writeScore(){
     this.ctx.fillStyle = 'black';
     this.ctx.font = '20px Verdana';
-    this.ctx.fillText(`Score: ${this.points}`, 800, 80)
+    this.ctx.fillText(`🚀🚀🚀 Score: ${this.points}`, 700, 30)
   }
 
-  // _gameOver(){
+  _timerGame(){
+    this.generatorTimer = setInterval (() => {
+    this.timer--;
+    }, 1000) 
+  }
+  _writeTimer(){
+    this.ctx.fillStyle = 'black';
+    this.ctx.font = '20px Verdana'
+    this.ctx.fillText(`⌛ Timer: ${this.timer}`, 500, 30)
+  }
 
-  // }
+  _gameOver(){
+    if(this.timer <= 0){
+      clearInterval(this.generateInterval)
+      const losePage = document.getElementById('lose-page')
+      losePage.style = 'display: flex';
+      const canvas = document.getElementById('canvas')
+      canvas.style = 'display: none';
+    }    
+  }
+ _win(){
+  
+
+ }
+
 
   _clean() {
     this.ctx.clearRect(0, 0, 1000, 600);
   }
 
   _update() {
-    this._clean();
+    this._clean();    
     this._drawEnemy();
-  //  this._drawScreen();
-    this.player._getMouse();
-    this._assignClickMouse
-    this._writeScore();
+   // this.player._getMouse();   
+    this._writeScore(); 
+    //this.clickEnemy();
+    this._writeTimer();    
     window.requestAnimationFrame(() => this._update());
+    this._gameOver();
   }
 
   start() {
-    //this._clickEnemy(); 
-    this.checkCollison();   
-    this._ass//
-    this._generateEnemies();
+    //this._clickEnemy();
+
+    this.checkCollison();
+    this._assignClickMouse();  
+    this._timerGame();
+    this._generateEnemies();  
     this._update();
   }
 }
