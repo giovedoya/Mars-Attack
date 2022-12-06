@@ -15,7 +15,7 @@
   flex-direction: column;
   text-align: center;
   margin: 0 auto;  
-  margin-top: 100px;
+  margin-top: 50px;
   background-image: url('/img/BGgame.png');
 }
 #lose-page {
@@ -30,14 +30,13 @@
   align-items: center;
   flex-direction: column;
   text-align: center;
-  margin: 0 auto;
+  margin-top: 50px;
   background-image: url('/img/background.png');
 }
 #win-page{
   display: none;
   color: red;
 }
-
 
 button {
   margin-top: 200px;
