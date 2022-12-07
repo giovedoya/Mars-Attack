@@ -2,6 +2,9 @@
   margin: 0;
   padding: 0;
 }
+body{
+  background-color: #1f758e;
+}
 
 /* Basic styles, change according to your style */
 
@@ -20,6 +23,7 @@
 }
 #lose-page {
   display: none;
+  background-image: url('/img/lose-page.png');
 }
 
 #win-page{
@@ -30,8 +34,9 @@
   align-items: center;
   flex-direction: column;
   text-align: center;
+  margin: 0 auto;
   margin-top: 50px;
-  background-image: url('/img/background.png');
+  background-image: url('/img/page-win.png');
 }
 #win-page{
   display: none;

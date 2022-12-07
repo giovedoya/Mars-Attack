@@ -26,5 +26,19 @@ enemy4.src = '../img/martians2.png'
 const enemy5 = new Image();
 enemy5.src = '../img/martians3.png'
 
-
 const enemigos = [hero1, hero2, enemy3, enemy4, enemy5]
+
+function sound(src) { // Esto es lo mismo que haciendo una clase pero con una función, si queréis podeis copiar directamente esto en un archivo y usarlo
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function() { // Aquí no podemos poner arrow function porque perdemos el this
+      this.sound.play();
+    };
+    this.stop = function() {
+      this.sound.pause();
+    };
+  }

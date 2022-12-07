@@ -8,6 +8,10 @@ class Game{
     this.timer = 30;
     this.generateTimer = undefined;
     this.youWin = undefined;
+    this.winPageSound = new sound('/sounds/page-win.mp3');
+    this.losePage = new sound('/sounds/lose-page.mp3');
+    this.pageStart = new sound('/sounds/True-Avidity-start.m4a');
+    this.shotEnemy = new sound('/sounds/shot.wav')
   }
 
 _generateEnemies(){
@@ -15,8 +19,8 @@ _generateEnemies(){
   const newEnemies = new Enemies();
   newEnemies._appearEnemy();
   this.enemies.push(newEnemies);
-  setTimeout(()=>newEnemies._disappearEnemy(), 1000);
-  setTimeout(()=>this.enemies.splice(this.enemies.indexOf(newEnemies),1), 1500);
+  setTimeout(()=>newEnemies._disappearEnemy(), 500);
+  setTimeout(()=>this.enemies.splice(this.enemies.indexOf(newEnemies),1), 2000);
   clearInterval(this._generateEnemies)  
 }, 1000)
 }
@@ -35,6 +39,7 @@ _drawEnemy(){
     && (this.player.y >= enemy.y && this.player.y <= enemy.y + enemy.height)){    
       this.points++;
      // this.enemies.splice(this.enemies.indexOf(enemy),1);
+     this.shotEnemy.play();
     }
   })  
 } 
@@ -73,6 +78,7 @@ _assignClickMouse(){
       losePage.style = 'display: flex';
       const canvas = document.getElementById('canvas')
       canvas.style = 'display: none';
+      this.losePage.play();
     }    
   }
  _win(){
@@ -83,6 +89,7 @@ _assignClickMouse(){
     winPage.style = 'display: flex';
     const canvas = document.getElementById('canvas')
     canvas.style = 'display: none';   
+    this.winPageSound.play();
   }
  }
 
@@ -106,6 +113,7 @@ _assignClickMouse(){
     this._timerGame();
     this._generateEnemies();  
     this._update();
+    this.pageStart.play();
   }
 }
 
