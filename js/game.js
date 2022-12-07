@@ -55,9 +55,9 @@ _assignClickMouse(){
 
 }
   _writeScore(){
-    this.ctx.fillStyle = 'black';
-    this.ctx.font = '20px Verdana';
-    this.ctx.fillText(`🚀🚀🚀 Score: ${this.points}`, 700, 30)
+    this.ctx.fillStyle = 'white';
+    this.ctx.font = '30px san-serif';
+    this.ctx.fillText(`Score: ${this.points}`, 850, 40)
   }
 
   _timerGame(){
@@ -67,8 +67,8 @@ _assignClickMouse(){
   }
   _writeTimer(){
     this.ctx.fillStyle = 'black';
-    this.ctx.font = '20px Verdana'
-    this.ctx.fillText(`⌛ Timer: ${this.timer}`, 500, 30)
+    this.ctx.font = '30px san-serif'
+    this.ctx.fillText(`Timer: ${this.timer}`, 700, 40)
   }
 
   _gameOver(){

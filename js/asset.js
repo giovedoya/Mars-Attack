@@ -1,13 +1,5 @@
 // // // enemies
 
-// Background
-const stars = new Image();
-stars.src = '../img/fondeestrellado.png'
-
-const  mars = new Image();
-mars.src = '../img/bg1.png'
-
-// Good
 
 const hero1 = new Image();
 hero1.src = '../img/guillen.png'
@@ -15,7 +7,6 @@ hero1.src = '../img/guillen.png'
 const hero2 = new Image();
 hero2.src = '../img/martians1.png'
 
-// Bad
 
 const enemy3 = new Image();
 enemy3.src = '../img/martians1.png'

@@ -8,8 +8,7 @@ body{
 
 /* Basic styles, change according to your style */
 
-#start-page,
-#lose-page {
+#start-page{
   height: 600px;
   width: 1000px;
   display: flex;
@@ -22,10 +21,21 @@ body{
   background-image: url('/img/BGgame.png');
 }
 #lose-page {
+  height: 600px;
+  width: 1000px;
+  display: flex;
+  justify-content:end;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  margin: 0 auto;  
+  margin-top: 50px;
   display: none;
   background-image: url('/img/lose-page.png');
 }
-
+#lose-page{
+  display: none;
+}
 #win-page{
   height: 600px;
   width: 1000px;
@@ -43,7 +53,7 @@ body{
   color: red;
 }
 
-button {
+button, #start {
   margin-top: 200px;
   margin-left: 150px;
   background: #e06450;
@@ -56,15 +66,18 @@ button {
   position: relative;
   border-radius: 20px;
 }
+button,
+#try-again{
+  margin: 0 auto;  
+  margin-bottom: 100px;
+}
 
 canvas {
-
   display: block;
   margin: 0 auto;
   margin-top: 30px;
   margin-bottom: 50px;
   background-image: url('/img/backgroundgame.png');
-
 }
 cursor { 
   background-image: url('img/mirilla.png');
