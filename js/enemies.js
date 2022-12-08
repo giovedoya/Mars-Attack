@@ -27,20 +27,4 @@ _disappearEnemy(){
         }, 10)     
         this.intervalId = setTimeout(this._disappearEnemy, 2000)
     }    
-
-// _assignRole(){
-//   if(Math.floor(Math.random()* 3 ) > 1){
-//     this.role === 'bad';
-//   } else{
-//     this.role = 'hero';
-//   }
-// }
-// _assignImage(){
-//   if(this.role === 'bad'){
-//     this.image = enemy3;
-//   } else {
-//     this.image = enemigos[Math.floor(Math.random() * enemigos.length)]
-//   }
-// }
-
 }

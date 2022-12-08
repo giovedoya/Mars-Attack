@@ -26,11 +26,10 @@ Minimum user stories:
 ## File structure
 
 - <code>game.js</code>: contains all the elements for the game to work. Methods: start(), \_update(), \ this.checkCollison(), \_assignClickMouse(), \_timerGame(), \_generateEnemies(); 
-- <code>scripts.js</code>: contains all the DOM manipulation code to start the game
+- <code>scripts.js</code>: contains all the DOM manipulation code to start the game.
 - <code>asset.js</code>: contains all images and sounds
-- <code>enemies.js</code>: contains the intervals to appear and disappear of the enemies
-- <code>player.js</code>: Contains the x and y coordinates of the player
-- <code>game.js</code>: Contains all the features of the game
+- <code>enemies.js</code>: contains the intervals to appear and disappear of the enemies.
+- <code>player.js</code>: Contains the x and y coordinates of the player.
 
 ## Useful links
 
