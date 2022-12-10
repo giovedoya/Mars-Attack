@@ -1,20 +1,20 @@
 // // // enemies
 
 const hero1 = new Image();
-hero1.src = '../img/guillen.png'
+hero1.src = './img/guillen.png'
 
 const hero2 = new Image();
-hero2.src = '../img/martians1.png'
+hero2.src = './img/martians1.png'
 
 
 const enemy3 = new Image();
-enemy3.src = '../img/martians1.png'
+enemy3.src = './img/martians1.png'
 
 const enemy4 = new Image();
-enemy4.src = '../img/martians2.png'
+enemy4.src = './img/martians2.png'
 
 const enemy5 = new Image();
-enemy5.src = '../img/martians3.png'
+enemy5.src = './img/martians3.png'
 
 const enemigos = [hero1, hero2, enemy3, enemy4, enemy5]
 
