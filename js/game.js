@@ -8,10 +8,10 @@ class Game{
     this.timer = 30;
     this.generateTimer = undefined;
     this.youWin = undefined;
-    this.winPageSound = new sound('/sounds/page-win.mp3');
-    this.losePage = new sound('/sounds/lose-page.mp3');
-    this.pageStart = new sound('/sounds/True-Avidity-start.m4a');
-    this.shotEnemy = new sound('/sounds/shot.wav');
+    this.winPageSound = new sound('../sounds/page-win.mp3');
+    this.losePage = new sound('../sounds/lose-page.mp3');
+    this.pageStart = new sound('../sounds/True-Avidity-start.m4a');
+    this.shotEnemy = new sound('../sounds/shot.wav');
   }
 
  
