@@ -12,9 +12,7 @@ class Game{
     this.losePage = new sound('../sounds/lose-page.mp3');
     this.pageStart = new sound('../sounds/True-Avidity-start.m4a');
     this.shotEnemy = new sound('../sounds/shot.wav');
-  }
-
- 
+  } 
 
 _generateEnemies(){
     this.generateInterval = setInterval(() => {
