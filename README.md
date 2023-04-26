@@ -1,7 +1,7 @@
 # Mars Attack
 
 <!-- When you finish, add a nice screenshot of your game -->
-<!--[<img src="./img/page.png">]()-->
+![Fondo del juego](./img/BGgame.png)
 
 ## Description
 
@@ -35,5 +35,5 @@ Minimum user stories:
 
 <!-- When you finish, add these links and commit -->
 
-- [Presentation slides]()
-- [Deployed game]()
+- [Presentation slides](https://slides.com/giovannibedoya/deck/fullscreen)
+- [Deployed game](https://giovedoya.github.io/Mars-Attack/)
