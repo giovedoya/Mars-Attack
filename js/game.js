@@ -12,8 +12,11 @@ class Game {
     this.losePage = new sound("./sounds/lose-page.mp3");
     this.pageStart = new sound("./sounds/True-Avidity-start.m4a");
     this.shotEnemy = new sound("./sounds/shot.wav");
+    this.explosionImage = new Image();
+    this.explosionImage.src = "./img/explotion7.png";
   }
 
+  
   _generateEnemies() {
     this.generateInterval = setInterval(() => {
       const newEnemies = new Enemies();
@@ -34,9 +37,10 @@ class Game {
       this.ctx.drawImage(elem.image, elem.x, elem.y, elem.width, elem.height);
     });
   }
+  
 
   checkCollison() {
-    this.enemies.forEach((enemy) => {
+    this.enemies.forEach((enemy, index) => {
       if (
         this.player.x >= enemy.x &&
         this.player.x <= enemy.x + enemy.width &&
@@ -45,9 +49,29 @@ class Game {
       ) {
         this.points++;
         this.shotEnemy.play();
+        this._createExplosion(enemy.x, enemy.y); 
+        Destroy(enemy.gameObject);
+        this.enemies.splice(index, 1);
       }
     });
   }
+
+  _createExplosion(x, y) {
+    const explosion = {
+      x: x,
+      y: y,
+      width: 250,
+      height: 250,
+      image: this.explosionImage,
+    };
+    this.enemies.push(explosion);
+  
+    setTimeout(() => {
+      this.enemies.splice(this.enemies.indexOf(explosion), 1);
+    }, 150);
+  }
+  
+
   _assignClickMouse() {
     canvas.addEventListener("click", (e) => {
       const rect = canvas.getBoundingClientRect();
@@ -58,10 +82,11 @@ class Game {
       this.checkCollison();
     });
   }
+  
   _writeScore() {
     this.ctx.fillStyle = "black";
     this.ctx.font = "30px san-serif";
-    this.ctx.fillText(`Score: ${this.points}`, 850, 40);
+    this.ctx.fillText(`Score: ${this.points}`, 550, 40);
   }
 
   _timerGame() {
@@ -72,7 +97,7 @@ class Game {
   _writeTimer() {
     this.ctx.fillStyle = "black";
     this.ctx.font = "30px san-serif";
-    this.ctx.fillText(`Timer: ${this.timer}`, 700, 40);
+    this.ctx.fillText(`Timer: ${this.timer}`, 400, 40);
   }
 
   _gameOver() {
