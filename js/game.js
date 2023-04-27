@@ -2,6 +2,7 @@ class Game {
   constructor(context) {
     this.ctx = context;
     this.enemies = [];
+    this.inmortal =[];
     this.generateInterval = null;
     this.player = new Player();
     this.points = 0;
@@ -13,7 +14,7 @@ class Game {
     this.pageStart = new sound("./sounds/True-Avidity-start.m4a");
     this.shotEnemy = new sound("./sounds/shot.wav");
     this.explosionImage = new Image();
-    this.explosionImage.src = "./img/explotion7.png";
+    this.explosionImage.src = "./img/explotion11.png";
   }
 
   
@@ -30,6 +31,7 @@ class Game {
       clearInterval(this._generateEnemies);
     }, 1000);
   }
+  
 
   // function that draw the enemies
   _drawEnemy() {
@@ -37,6 +39,7 @@ class Game {
       this.ctx.drawImage(elem.image, elem.x, elem.y, elem.width, elem.height);
     });
   }
+  
   
 
   checkCollison() {
@@ -60,8 +63,8 @@ class Game {
     const explosion = {
       x: x,
       y: y,
-      width: 250,
-      height: 250,
+      width: 270,
+      height: 270,
       image: this.explosionImage,
     };
     this.enemies.push(explosion);

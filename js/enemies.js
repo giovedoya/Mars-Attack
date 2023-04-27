@@ -4,9 +4,10 @@ constructor(){
     this.y = 600;
     this.width = 200 ;
     this.height = 300;
-    this.appearInterval = undefined;
-    this.disappearInterval = undefined;
+    this.appearInterval = null;
+    this.disappearInterval = null;
     this.image = enemigos[Math.floor(Math.random() * enemigos.length )]
+    
 }
 
 _appearEnemy(){
